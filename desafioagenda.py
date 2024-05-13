@@ -14,7 +14,7 @@ class Agenda:
 
     def listar_contatos(self):
         for contato in self.contatos:
-            print(f"Nome:{contato.nome}, Telefone:{contato.telefone}, Email:{contato.email},Favorito: {'Sim' if contato.favorito else 'Não'}") 
+            print(f"Nome:{contato.nome}, Telefone:{contato.telefone}, Email:{contato.email}, Favorito: {'Sim' if contato.favorito else 'Não'}") 
 
     def editar_contato(self, nome, novo_telefone, novo_email):
         for contato in self.contatos:
@@ -60,7 +60,7 @@ class Agenda:
         print("Contato não encontrado.")
 
 
-    def menu():
+def menu():
      print("=== Menu ===")
      print("1. Adicionar Contato")
      print("2. Listar Contatos")
@@ -68,4 +68,51 @@ class Agenda:
      print("4. Marcar/Demarcar como Favorito")
      print("5. Listar Contatos Favoritos")
      print("6. Apagar Contato")
-     print("7. Sair")    
+     print("7. Sair")  
+
+agenda = Agenda()  
+
+while True:
+    menu()
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "1":
+        nome = input("Nome: ")
+        telefone = input("Telefone: ")
+        email = input("Email: ")
+        novo_contato = Contato(nome, telefone, email)
+        agenda.add_contato(novo_contato)
+
+    elif opcao == "2":
+        print("Lista de Contatos:")
+        agenda.listar_contatos()
+
+    elif opcao == "3":
+        nome = input("Digite o nome do contato que deseja editar: ")
+        novo_telefone = input("Novo telefone: ")
+        novo_email = input("Novo email: ")
+        agenda.editar_contato(nome, novo_telefone, novo_email)
+
+    elif opcao == "4":
+        nome = input("Digite o nome do contato: ")
+        opcao_favorito = input("Marcar (M) ou Desmarcar (D) como favorito: ").upper()
+        if opcao_favorito == "M":
+            agenda.marcar_favorito(nome)
+        elif opcao_favorito == "D":
+            agenda.desmarcar_favorito(nome)
+        else:
+            print("Opção inválida.")
+
+    elif opcao == "5":
+        print("Lista de Contatos Favoritos:")
+        agenda.listar_favoritos()
+
+    elif opcao == "6":
+        nome = input("Digite o nome do contato que deseja apagar: ")
+        agenda.apagar_contato(nome)
+
+    elif opcao == "7":
+        print("Saindo...")
+        break
+    else:
+        print("Opção inválida. Por favor, escolha uma opção válida.")    
