@@ -31,4 +31,30 @@ class Agenda:
                 contato.favorito = True
                 print("Contato marcado como favorito.")
                 return
-        print("Contato não encontrado.")            
+        print("Contato não encontrado.")     
+
+
+    def desmarcar_favorito(self, nome):
+        for contato in self.contatos:
+            if contato.nome == nome:
+                contato.favorito = False
+                print("Contato desmarcado como favorito.")
+                return
+        print("Contato não encontrado.")
+
+    def listar_favoritos(self):
+        favoritos = [contato for contato in self.contatos if contato.favorito]
+        if favoritos:
+            print("Lista de contatos favoritos:")
+            for contato in favoritos:
+                print(f"Nome: {contato.nome}, Telefone: {contato.telefone}, Email: {contato.email}")
+        else:
+            print("Nenhum contato favorito encontrado.")
+
+    def apagar_contato(self, nome):
+        for contato in self.contatos:
+            if contato.nome == nome:
+                self.contatos.remove(contato)
+                print("Contato apagado com sucesso.") 
+                return
+        print("Contato não encontrado.")
