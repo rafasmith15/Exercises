@@ -58,3 +58,14 @@ class Agenda:
                 print("Contato apagado com sucesso.") 
                 return
         print("Contato não encontrado.")
+
+
+    def menu():
+     print("=== Menu ===")
+     print("1. Adicionar Contato")
+     print("2. Listar Contatos")
+     print("3. Editar Contato")
+     print("4. Marcar/Demarcar como Favorito")
+     print("5. Listar Contatos Favoritos")
+     print("6. Apagar Contato")
+     print("7. Sair")    
